@@ -48,6 +48,7 @@ export const loadAllRoutes = (app) => {
 				.map(file => folder + '/' + file)
 				.filter(path => path.includes('-route.js'))
 				.forEach(path => {
+					console.log(path)
 					require(path)(app);
 				});
 		});

@@ -1,4 +1,4 @@
-import newRepository from './new-repository';
+import newRepository from './news-repository';
 
 exports.getAllNews =  async  (req, res) =>  {
 	try {

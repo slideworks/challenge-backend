@@ -21,7 +21,7 @@ const loadModels = (sequelize) => {
 				});
 		});
 	return models;
-}
+};
 
 export default  () => {
 	if(!database){

@@ -1,28 +1,31 @@
 export default{
 	production:{
 		database: 'challengeBackend',
-		username: 'admin',
+		username: 'root',
 		password: '123',
 		params: {
-			dialect: 'postgres',
+			dialect: 'sqlite',
+			storage: 'slideworks.sqlite',
 			logging: false
 		},
 	},
 	development:{
 		database: 'challengeBackend',
-		username: 'postgres',
+		username: 'root',
 		password: '123',
 		params: {
-			dialect: 'postgres',
+			dialect: 'sqlite',
+			storage: 'slideworksdev.sqlite',
 			logging: false
 		},
 	},
 	test:{
 		database: 'challengeBackend',
-		username: 'postgres',
-		password: 'postgres',
+		username: 'root',
+		password: '123',
 		params: {
-			dialect: 'postgres',
+			dialect: 'sqlite',
+			storage: 'slideworkstest.sqlite',
 			logging: false
 		},
 	},
