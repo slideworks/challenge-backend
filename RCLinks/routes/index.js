@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var NewsController = require('../controllers/news.controller');
+var newsCtrl = new NewsController();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/news', newsCtrl.list);
+router.post('/news', newsCtrl.create);
+router.patch('/news/:id/up', newsCtrl.voteUp);
+router.patch('/news/:id/down', newsCtrl.voteDown);
 
 module.exports = router;
