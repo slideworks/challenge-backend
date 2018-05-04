@@ -23,8 +23,16 @@ export default(sequelize, DataType) => {
 		},
 		ip: {
 			type: DataType.STRING,
-			allowNull: true,
-		},
+			allowNull: false,
+		},	
+	},
+	{
+		hooks: {
+			beforeCreate: (news) => {
+				news.set('up_votes', 0);
+				news.set('down_votes', 0);
+			},
+		}
 	});
 
 	return News;

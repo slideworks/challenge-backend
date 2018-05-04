@@ -7,11 +7,12 @@ export default(sequelize, DataType) => {
 		},
 		direction_vote: {
 			type: DataType.STRING(4),
+			values: ['up', 'down'],
 			allowNull: false,
 		},
 		ip: {
 			type: DataType.STRING,
-			allowNull: true,
+			allowNull: false,
 		},
 	});
 

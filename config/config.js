@@ -4,8 +4,7 @@ export default{
 		username: 'root',
 		password: '123',
 		params: {
-			dialect: 'sqlite',
-			storage: 'slideworks.sqlite',
+			dialect: 'mysql',
 			logging: false
 		},
 	},
@@ -14,8 +13,7 @@ export default{
 		username: 'root',
 		password: '123',
 		params: {
-			dialect: 'sqlite',
-			storage: 'slideworksdev.sqlite',
+			dialect: 'mysql',
 			logging: false
 		},
 	},
@@ -24,8 +22,7 @@ export default{
 		username: 'root',
 		password: '123',
 		params: {
-			dialect: 'sqlite',
-			storage: 'slideworkstest.sqlite',
+			dialect: 'mysql',
 			logging: false
 		},
 	},
