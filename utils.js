@@ -48,8 +48,11 @@ export const loadAllRoutes = (app) => {
 				.map(file => folder + '/' + file)
 				.filter(path => path.includes('-route.js'))
 				.forEach(path => {
-					console.log(path)
 					require(path)(app);
 				});
 		});
+};
+
+export const responseResultObject = (message, data = 'error') => {
+	return {message: message, data:data};
 };
