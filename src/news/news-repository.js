@@ -8,6 +8,28 @@ exports.findAll = () => {
 				.catch(err => err);
 };
 
+exports.findAllWithParam = (param) => {
+	if(param.hasOwnProperty('up')){
+		return  News.findAll({ include: [{ model: Votes }] , order: [['up_votes', 'DESC']] })
+					.then(result => result)
+					.catch(err => err);
+	}
+	if(param.hasOwnProperty('down')){
+		return  News.findAll({ include: [{ model: Votes }], order: [['down_votes', 'DESC']] })
+					.then(result => result)
+					.catch(err => err);
+	}
+
+	if(param.hasOwnProperty('lastNews')){
+		return  News.findAll({ include: [{ model: Votes }], order: [['created_at', 'DESC']]})
+					.then(result => result)
+					.catch(err => err);
+	}
+	return News.findAll({ include: [{ model: Votes }] })
+					.then(result => result)
+					.catch(err => err);
+};
+
 exports.findOne = (id) => {
 	return  News.findOne({ where: { id: id } })
 				.then(result => result)
