@@ -5,7 +5,10 @@ export default{
 		password: '123',
 		params: {
 			dialect: 'mysql',
-			logging: false
+			logging: false,
+			define: {
+				underscored: true,
+			},
 		},
 	},
 	development:{
@@ -14,7 +17,10 @@ export default{
 		password: '123',
 		params: {
 			dialect: 'mysql',
-			logging: false
+			logging: false,
+			define: {
+				underscored: true,
+			},
 		},
 	},
 	test:{
@@ -23,7 +29,10 @@ export default{
 		password: '123',
 		params: {
 			dialect: 'mysql',
-			logging: false
+			logging: false,
+			define: {
+				underscored: true,
+			},
 		},
 	},
 };
