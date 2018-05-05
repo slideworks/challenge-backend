@@ -1,5 +1,6 @@
 import newRepository from './news-repository';
 import {responseResultObject} from '../../utils';
+import HttpStatus from 'http-status-codes';
 
 exports.getAllNews =  async  (req, res) =>  {
 	const param = req.query;
@@ -21,7 +22,7 @@ exports.getAllNews =  async  (req, res) =>  {
 	} else {
 		try {
 			const result =  await newRepository.findAll();
-			res.status(200).send(result);
+			res.status(HttpStatus.OK).send(result);
 		} catch (err) {
 			res.status(500).send(responseResultObject("Ocorreu um erro durante o processamento da requisição", err.message));
 			throw(err);
@@ -36,10 +37,10 @@ exports.addNew =  async  (req, res) =>  {
 		if (result['errors'] || result['parent']) {
 			res.status(400).send(responseResultObject("A noticia não foi cadastrada!", result));
 		} else {
-			res.status(201).send(responseResultObject("A noticia foi cadastrada com sucesso!", result));
+			res.status(HttpStatus.CREATED).send(responseResultObject("A noticia foi cadastrada com sucesso!", result));
 		}
 	} catch (err) {
-		res.status(500).send(responseResultObject("Ocorreu um erro durante o processamento da requisição", err.message));
+		res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("Ocorreu um erro durante o processamento da requisição", err.message));
 		throw(err);
 	}
 }; 
