@@ -40,7 +40,8 @@ export default  () => {
 
 		database.models =  loadModels(sequelize);
 
-		database.models.News.hasMany(database.models.Votes,{foreignKey: 'news_id',constraints: false});
+		database.models.news.hasMany(database.models.votes);
+		database.models.votes.belongsTo(database.models.news);
 		return database;
 	} else{
 		return database;
