@@ -1,5 +1,5 @@
 export default(sequelize, DataType) => {
-	const Vote = sequelize.define('Votes', {
+	const Vote = sequelize.define('votes', {
 		id: {
 			type: DataType.INTEGER,
 			primaryKey: true,

@@ -1,15 +1,15 @@
 import loadDatabase from '../../config/datasource';
-const Vote =  loadDatabase().models.Votes;
-const New = loadDatabase().models.News;
+const Vote =  loadDatabase().models.votes;
+const New = loadDatabase().models.news;
 
-exports.upVote = (idNews,data) => {
-	return   Vote.update(data, { where: { id: idNews } })
+exports.upVote = (data) => {
+	return   Vote.create(data)
 				.then(result => result)
 				.catch(err => err);
 };
 
-exports.downVote = (idNews,data) => {
-	return   Vote.update(data, { where: { id: idNews } })
+exports.downVote = (data) => {
+	return   Vote.create(data)
 				.then(result => result)
 				.catch(err => err);
 };
