@@ -30,7 +30,8 @@
     "nodemon": "^1.17.3",
     "sequelize": "^4.29.2",
     "sequelize-cli": "^4.0.0",
-    "sqlite3": "^4.0.0"
+    "sqlite3": "^4.0.0",
+    "url-exists": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

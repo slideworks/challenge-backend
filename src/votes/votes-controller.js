@@ -32,8 +32,8 @@ exports.upVote =  async  (req, res) =>  {
 		}
 		
 	} catch (err) {
+		console.error(err);
 		res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject('Ocorreu um erro durante o processamento da requisição',err.message));
-		throw(err);
 	}
 }; 
 
@@ -65,8 +65,8 @@ exports.downVote =  async  (req, res) =>  {
 		}
 		
 	} catch (err) {
+		console.error(err);
 		res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject('Ocorreu um erro durante o processamento da requisição',err.message));
-		throw(err);
 	}
 }; 
  
