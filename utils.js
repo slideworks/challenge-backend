@@ -1,5 +1,7 @@
 import fs  from 'fs' ;
 import path  from 'path';
+import RateLimit from 'express-rate-limit';
+
 export const normalizePort = (val) => {
 	let port = (typeof val === 'string') ? parseInt(val) : val;
 	if (isNaN(port)) return val;
@@ -55,4 +57,9 @@ export const loadAllRoutes = (app) => {
 
 export const responseResultObject = (message, data = 'error') => {
 	return {message: message, data:data};
+};
+
+export const apiLimiter = () => {
+	// maximo de 100 requisições durante 15 minutos
+	return new RateLimit({windowMs: 15*60*1000, max: 1 ,delayMs: 0, message: 'Muitas requisições feitas a partir deste IP, por favor, tente novamente após alguns minutos'});
 };

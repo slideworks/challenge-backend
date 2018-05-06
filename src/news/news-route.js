@@ -1,7 +1,8 @@
 import newsController from './news-controller';
-
+import {apiLimiter} from '../../utils';
 
 module.exports = (app) => {
-	app.get('/api/news', newsController.getAllNews);
-	app.post('/api/news', newsController.addNew);
+	
+	app.get('/api/news', apiLimiter(), newsController.getAllNews);
+	app.post('/api/news',apiLimiter(), newsController.addNew);
 };
