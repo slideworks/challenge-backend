@@ -1,4 +1,6 @@
 import urlExists from 'url-exists';
+import cheerio from 'cheerio';
+import request from 'request';
 import newRepository from './news-repository';
 import {responseResultObject} from '../../utils';
 import HttpStatus from 'http-status-codes';
@@ -37,6 +39,23 @@ exports.addNew =  async  (req, res) =>  {
 		const link = await exports.isValidLink(req.body.link);
 		if(!link) throw 'O link é inválido'
 
+		if (req.body.title === ''){
+			const html	= await exports.getHtmlOfTheSite(req.body.link);
+
+			const $ = cheerio.load(html);
+			req.body.title = $('h1').first().text();
+			
+			if(req.body.title === ''){
+				return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("A noticia não foi cadastrada pois não foi possivel identificar o seu titulo!"));
+			} 
+			const result =  await newRepository.create(req.body);
+			
+			if (result['errors'] || result['parent']) {
+				return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("A noticia não foi cadastrada!", result));
+			} else {
+				return res.status(HttpStatus.CREATED).send(responseResultObject("A noticia foi cadastrada com sucesso!", result));
+			}
+		}
 		const result =  await newRepository.create(req.body);
 		
 		if (result['errors'] || result['parent']) {
@@ -50,4 +69,6 @@ exports.addNew =  async  (req, res) =>  {
 	}
 }; 
 
-exports.isValidLink= (url) => new Promise((resolve, reject) => urlExists(url, (err, exists) => err ? reject(err) : resolve(exists)))
+exports.isValidLink= (url) => new Promise((resolve, reject) => urlExists(url, (err, exists) => err ? reject(err) : resolve(exists)));
+
+exports.getHtmlOfTheSite = (url) => new Promise((resolve, reject) => request(url, (err, httpResponse, body) => err ? reject(err) : resolve(body)));
