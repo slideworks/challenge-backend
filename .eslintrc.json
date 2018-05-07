@@ -6,6 +6,9 @@
         "node": true
     },
     "extends": "eslint:recommended",
+    "globals": {
+        "describe":true
+    },
     "parserOptions": {
         "sourceType": "module"
     },
