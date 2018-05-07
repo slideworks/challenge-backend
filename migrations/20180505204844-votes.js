@@ -11,7 +11,7 @@ module.exports = {
 				references: {
 					model: 'news',
 					key: 'id'
-				  },
+				},
 			},
 			direction_vote: {
 				type: Sequelize.STRING(4),
