@@ -19,13 +19,13 @@ exports.getAllNews =  async  (req, res) =>  {
 			}
 			
 		}  else {
-			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("Os parametros não estão de acordo com o que era esperado"));
+			 res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("Os parametros não estão de acordo com o que era esperado"));
 		}
 			
 	} else {
 		try {
 			const result =  await newRepository.findAll();
-			res.status(HttpStatus.OK).send(result);
+			res.status(HttpStatus.OK).send(responseResultObject("As noticias foram listadas com sucesso!", result));
 		} catch (err) {
 			console.error(err)
 			res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("Ocorreu um erro durante o processamento da requisição", err.message));
