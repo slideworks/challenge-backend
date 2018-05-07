@@ -8,6 +8,11 @@ exports.upVote =  async  (req, res) =>  {
 	if(!req.params.id){
 		return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('Está faltando o parametro na url!'));
 	}
+	
+	if(req.body.direction_vote.toLowerCase() !== 'up' && req.body.direction_vote.toLowerCase() !== 'down'){
+		return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('O corpo da requisição não possui os valores corretos para ser aceito!'));
+	}
+
 	try {
 		let newOfThisVote = await newsRepository.findOne(req.params.id);
 		if(!newOfThisVote) return res.status(HttpStatus.NOT_FOUND).send(responseResultObject('Não existe noticia com esse id!'));
@@ -25,9 +30,9 @@ exports.upVote =  async  (req, res) =>  {
 			const updatedNew = await newsRepository.updateVote(req.params.id, newOfThisVote.dataValues)
 			
 			if (updatedNew['errors'] || updatedNew['parent']){
-				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("O voto foi cadastrada com sucesso mas a noticia não pode ser atualizada!", updatedNew))
+				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("O voto foi cadastrado com sucesso mas a noticia não pode ser atualizada!", updatedNew))
 			}	else	{
-				res.status(HttpStatus.CREATED).send(responseResultObject("O voto foi cadastrada com sucesso e a noticia foi atualizada com sucesso!", result));
+				res.status(HttpStatus.CREATED).send(responseResultObject("O voto foi cadastrado com sucesso e a noticia foi atualizada com sucesso!", result));
 			}
 		}
 		
@@ -58,9 +63,9 @@ exports.downVote =  async  (req, res) =>  {
 			const updatedNew = await newsRepository.updateVote(req.params.id, newOfThisVote.dataValues)
 			
 			if (updatedNew['errors'] || updatedNew['parent']){
-				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("O voto foi cadastrada com sucesso mas a noticia não pode ser atualizada!", updatedNew))
+				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("O voto foi cadastrado com sucesso mas a noticia não pode ser atualizada!", updatedNew))
 			}	else	{
-				res.status(HttpStatus.CREATED).send(responseResultObject("O voto foi cadastrada com sucesso e a noticia foi atualizada com sucesso!", result));
+				res.status(HttpStatus.CREATED).send(responseResultObject("O voto foi cadastrado com sucesso e a noticia foi atualizada com sucesso!", result));
 			}
 		}
 		
