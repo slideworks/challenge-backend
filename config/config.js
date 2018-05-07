@@ -1,11 +1,20 @@
+
+let match = ['root','123',':8080','localhost','challengeBackend'];
+
+if(process.env.DATABASE_URL) {
+	match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+}
 export default{
 	production:{
-		database: 'challengeBackend',
-		username: 'root',
-		password: '123',
+		database: match[5] ,
+		username: match[1],
+		password: match[2],
 		params: {
-			dialect: 'mysql',
+			dialect:  'postgres' ,
 			logging: false,
+			protocol: 'postgres',
+			port: match[4],
+			host: match[3],
 			define: {
 				underscored: true,
 			},

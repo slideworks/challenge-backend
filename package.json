@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": ">= 7.6.0"
+  },
   "scripts": {
     "babel-node": "babel-node --presets=es2015",
     "production": "NODE_ENV=production babel-node ./server.js",
