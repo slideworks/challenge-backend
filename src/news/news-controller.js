@@ -12,23 +12,23 @@ exports.getAllNews =  async  (req, res) =>  {
 		if((param.hasOwnProperty('up') || param.hasOwnProperty('down') || param.hasOwnProperty('lastNews') ) && Object.keys(req.query).length === 1){
 			try {
 				const result = await newRepository.findAllWithParam(param);	
-				res.status(HttpStatus.OK).send(responseResultObject("As noticias foram listadas com sucesso!", result));
+				res.status(HttpStatus.OK).send(responseResultObject('As noticias foram listadas com sucesso!', result));
 			} catch (error) {
-				console.error(err)
-				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("Ocorreu um erro durante o processamento da requisição", err.message));
+				console.error(error);
+				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject('Ocorreu um erro durante o processamento da requisição', error.message));
 			}
 			
 		}  else {
-			 res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("Os parametros não estão de acordo com o que era esperado"));
+			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('Os parametros não estão de acordo com o que era esperado'));
 		}
 			
 	} else {
 		try {
 			const result =  await newRepository.findAll();
-			res.status(HttpStatus.OK).send(responseResultObject("As noticias foram listadas com sucesso!", result));
+			res.status(HttpStatus.OK).send(responseResultObject('As noticias foram listadas com sucesso!', result));
 		} catch (err) {
-			console.error(err)
-			res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("Ocorreu um erro durante o processamento da requisição", err.message));
+			console.error(err);
+			res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject('Ocorreu um erro durante o processamento da requisição', err.message));
 		}
 	}
 }; 
@@ -37,7 +37,7 @@ exports.addNew =  async  (req, res) =>  {
 		
 	try {
 		const link = await exports.isValidLink(req.body.link);
-		if(!link) throw 'O link é inválido'
+		if(!link) throw 'O link é inválido';
 
 		if (req.body.title === ''){
 			const html	= await exports.getHtmlOfTheSite(req.body.link);
@@ -46,26 +46,26 @@ exports.addNew =  async  (req, res) =>  {
 			req.body.title = $('h1').first().text();
 			
 			if(req.body.title === ''){
-				return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("A noticia não foi cadastrada pois não foi possivel identificar o seu titulo!"));
+				return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('A noticia não foi cadastrada pois não foi possivel identificar o seu titulo!'));
 			} 
 			const result =  await newRepository.create(req.body);
 			
 			if (result['errors'] || result['parent']) {
-				return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("A noticia não foi cadastrada!", result));
+				return res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('A noticia não foi cadastrada!', result));
 			} else {
-				return res.status(HttpStatus.CREATED).send(responseResultObject("A noticia foi cadastrada com sucesso!", result));
+				return res.status(HttpStatus.CREATED).send(responseResultObject('A noticia foi cadastrada com sucesso!', result));
 			}
 		}
 		const result =  await newRepository.create(req.body);
 		
 		if (result['errors'] || result['parent']) {
-			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("A noticia não foi cadastrada!", result));
+			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('A noticia não foi cadastrada!', result));
 		} else {
-			res.status(HttpStatus.CREATED).send(responseResultObject("A noticia foi cadastrada com sucesso!", result));
+			res.status(HttpStatus.CREATED).send(responseResultObject('A noticia foi cadastrada com sucesso!', result));
 		}
 	} catch (err) {
-		console.error(err)
-		res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("Ocorreu um erro durante o processamento da requisição", err.message || err));
+		console.error(err);
+		res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject('Ocorreu um erro durante o processamento da requisição', err.message || err));
 	}
 }; 
 

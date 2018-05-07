@@ -22,7 +22,7 @@ exports.vote =  async  (req, res) =>  {
 		const result =  await votesRepository.registerVote(req.body);
 
 		if (result['errors']|| result['parent']) {
-			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("O voto não foi cadastrado!", result));
+			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('O voto não foi cadastrado!', result));
 		} else {
 			
 			if(req.body.direction_vote.toLowerCase() === 'up'){
@@ -31,12 +31,12 @@ exports.vote =  async  (req, res) =>  {
 				newOfThisVote.dataValues.down_votes = newOfThisVote.dataValues.down_votes+1;
 			}
 
-			const updatedNew = await newsRepository.updateVote(req.params.id, newOfThisVote.dataValues)
+			const updatedNew = await newsRepository.updateVote(req.params.id, newOfThisVote.dataValues);
 			
 			if (updatedNew['errors'] || updatedNew['parent']){
-				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject("O voto foi cadastrado com sucesso mas a noticia não pode ser atualizada!", updatedNew))
+				res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject('O voto foi cadastrado com sucesso mas a noticia não pode ser atualizada!', updatedNew));
 			}	else	{
-				res.status(HttpStatus.CREATED).send(responseResultObject("O voto foi cadastrado com sucesso e a noticia foi atualizada com sucesso!", result));
+				res.status(HttpStatus.CREATED).send(responseResultObject('O voto foi cadastrado com sucesso e a noticia foi atualizada com sucesso!', result));
 			}
 		}
 		

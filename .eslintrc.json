@@ -7,10 +7,13 @@
     },
     "extends": "eslint:recommended",
     "globals": {
-        "describe":true
+        "describe":true,
+        "expect":true,
+        "it":true
     },
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaVersion": 8
     },
     "rules": {
         "indent": [
@@ -31,7 +34,7 @@
         ],
         "no-console":["error", 
             { 
-                "allow": ["warn", "error"] 
+                "allow": ["warn", "error","info"] 
             }
         ] 
     }
