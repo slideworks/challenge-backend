@@ -53,8 +53,13 @@
 - EsLint
 
 ## Referência da API
-A tabela abaixo mostra os diferentes endpoints que a aplicação possui
+A tabela abaixo mostra os diferentes endpoints que a aplicação possui. Para uma documentação mais detalhada só é preciso executar o seguinte comando:
 
+```sh
+> npm run documentation
+```
+
+Ou acessar entrar no diretorio /doc e acessar o arquivo index.html
 ### News
 |      METODO      |     ENDPOINT        |        FUNÇÃO                                    
 |------------------|---------------------|----------------------
