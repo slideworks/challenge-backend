@@ -53,8 +53,13 @@
 - EsLint
 
 ## Referência da API
-A tabela abaixo mostra os diferentes endpoints que a aplicação possui
+A tabela abaixo mostra os diferentes endpoints que a aplicação possui. Para uma documentação mais detalhada só é preciso executar o seguinte comando:
 
+```sh
+> npm run documentation
+```
+
+Ou entrar no diretorio /doc e acessar o arquivo index.html
 ### News
 |      METODO      |     ENDPOINT        |        FUNÇÃO                                    
 |------------------|---------------------|----------------------
@@ -103,7 +108,7 @@ Instale as dependências do projeto
 ```sh
 > npm install
 ```
-Crie um banco de dados chamado "challengeBackend" no MySQL e mude as opções no arquivo config.js para o password e o usuário que voc definiu anteriormente no seu banco MySQL
+Crie um banco de dados chamado "challengeBackend" no MySQL e mude as opções no arquivo config.js para o password e o usuário que você definiu anteriormente no seu banco MySQL
 
 ```sh
 export default{
