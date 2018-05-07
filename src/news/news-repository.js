@@ -3,7 +3,7 @@ const News =  loadDatabase().models.news;
 const Votes = loadDatabase().models.votes;
 
 exports.findAll = () => {
-	return  News.findAll({ include: [{ model: Votes }] })
+	return  News.findAll({ include: [{ model: Votes }], order: [['id']] })
 				.then(result => result)
 				.catch(err => err);
 };
@@ -25,7 +25,7 @@ exports.findAllWithParam = (param) => {
 					.then(result => result)
 					.catch(err => err);
 	}
-	return News.findAll({ include: [{ model: Votes }] })
+	return News.findAll({ include: [{ model: Votes }], order: [['id']] })
 					.then(result => result)
 					.catch(err => err);
 };
@@ -42,8 +42,8 @@ exports.create = (data) => {
 				.catch(err => err);
 };
 
-exports.update = (idNews,data) => {
-	return  News.update(data, { where: { id: idNews } })
+exports.delete = (idNews) => {
+	return  News.destroy({ where: { id: idNews } })
 				.then(result => result)
 				.catch(err => err);
 };
