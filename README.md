@@ -22,17 +22,17 @@
 │   
 ├── src
 │   ├── news
-|       └── news-controller.js
-|       └── news-model.js
-|       └── news-repository.js
-|       └── news-route.js
-|       └── news-test.js
+│   │    └── news-controller.js
+│   │    └── news-model.js
+│   │    └── news-repository.js
+│   │    └── news-route.js
+│   │    └── news-test.js
 │   ├── votes
-|       └── votes-controller.js
-|       └── votes-model.js
-|       └── votes-repository.js
-|       └── votes-route.js
-|       └── votes-test.js
+│       └── votes-controller.js
+│       └── votes-model.js
+│       └── votes-repository.js
+│       └── votes-route.js
+│       └── votes-test.js
 ├── .babelrc
 ├── .sequelizerc
 ├── .eslintrc.json
