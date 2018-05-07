@@ -24,6 +24,9 @@ export default(sequelize, DataType) => {
 		ip: {
 			type: DataType.STRING,
 			allowNull: false,
+			validate:{
+				isIP:true
+			}
 		},	
 	},
 	{

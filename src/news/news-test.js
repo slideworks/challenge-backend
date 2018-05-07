@@ -27,7 +27,7 @@ describe('News Test Suite : getNews function',  () => {
 			expect(response._getData().data[0].dataValues.link).to.be.eql('globoesporte.globo.com');
 			expect(response._getData().data[0].dataValues.up_votes).to.be.eql(1);
 			expect(response._getData().data[0].dataValues.down_votes).to.be.eql(3);
-			expect(response._getData().data[0].dataValues.ip).to.be.eql('1283.1230123');
+			expect(response._getData().data[0].dataValues.ip).to.be.eql('192.168.0.1');
 		});
 	});
 
@@ -53,14 +53,14 @@ describe('News Test Suite : getNews function',  () => {
 			expect(response._getData().data[0].dataValues.link).to.be.eql('noticiaaleatoria.com');
 			expect(response._getData().data[0].dataValues.up_votes).to.be.eql(3);
 			expect(response._getData().data[0].dataValues.down_votes).to.be.eql(1);
-			expect(response._getData().data[0].dataValues.ip).to.be.eql('1283.1230123');
+			expect(response._getData().data[0].dataValues.ip).to.be.eql('223.0.0.2');
 
 			expect(response._getData().data[1].dataValues.id).to.be.eql(3);
 			expect(response._getData().data[1].dataValues.title).to.be.eql('Bitcoin estoura');
 			expect(response._getData().data[1].dataValues.link).to.be.eql('foxbit.com.br');
 			expect(response._getData().data[1].dataValues.up_votes).to.be.eql(2);
 			expect(response._getData().data[1].dataValues.down_votes).to.be.eql(0);
-			expect(response._getData().data[1].dataValues.ip).to.be.eql('1283.1230123');
+			expect(response._getData().data[1].dataValues.ip).to.be.eql('223.0.0.1');
 		});
 	});
 
@@ -86,14 +86,14 @@ describe('News Test Suite : getNews function',  () => {
 			expect(response._getData().data[0].dataValues.link).to.be.eql('globoesporte.globo.com');
 			expect(response._getData().data[0].dataValues.up_votes).to.be.eql(1);
 			expect(response._getData().data[0].dataValues.down_votes).to.be.eql(3);
-			expect(response._getData().data[0].dataValues.ip).to.be.eql('1283.1230123');
+			expect(response._getData().data[0].dataValues.ip).to.be.eql('192.168.0.1');
 
 			expect(response._getData().data[1].dataValues.id).to.be.eql(2);
 			expect(response._getData().data[1].dataValues.title).to.be.eql('O mundo está em paz!');
 			expect(response._getData().data[1].dataValues.link).to.be.eql('g1.globo.com');
 			expect(response._getData().data[1].dataValues.up_votes).to.be.eql(0);
 			expect(response._getData().data[1].dataValues.down_votes).to.be.eql(2);
-			expect(response._getData().data[1].dataValues.ip).to.be.eql('1283.1230123');
+			expect(response._getData().data[1].dataValues.ip).to.be.eql('192.168.25.254');
 		});
 	});
 
@@ -119,14 +119,14 @@ describe('News Test Suite : getNews function',  () => {
 			expect(response._getData().data[0].dataValues.link).to.be.eql('noticiaaleatoria.com');
 			expect(response._getData().data[0].dataValues.up_votes).to.be.eql(3);
 			expect(response._getData().data[0].dataValues.down_votes).to.be.eql(1);
-			expect(response._getData().data[0].dataValues.ip).to.be.eql('1283.1230123');
+			expect(response._getData().data[0].dataValues.ip).to.be.eql('223.0.0.2');
 
 			expect(response._getData().data[1].dataValues.id).to.be.eql(3);
 			expect(response._getData().data[1].dataValues.title).to.be.eql('Bitcoin estoura');
 			expect(response._getData().data[1].dataValues.link).to.be.eql('foxbit.com.br');
 			expect(response._getData().data[1].dataValues.up_votes).to.be.eql(2);
 			expect(response._getData().data[1].dataValues.down_votes).to.be.eql(0);
-			expect(response._getData().data[1].dataValues.ip).to.be.eql('1283.1230123');
+			expect(response._getData().data[1].dataValues.ip).to.be.eql('223.0.0.1');
 		});
 	});
 
@@ -163,7 +163,7 @@ describe('News Test Suite : addNew function',  () => {
 					id:5,
 					title: 'Europe Takes First Steps in Electrifying World’s Shipping Fleets',
 					link:'https://e360.yale.edu/features/europe-takes-first-steps-in-electrifying-worlds-shipping-fleets',
-					ip: '172.1.1.1'
+					ip: '223.0.0.1'
 				}
 			});
             
@@ -176,7 +176,7 @@ describe('News Test Suite : addNew function',  () => {
 			expect(response._getData().message).to.be.eql('A noticia foi cadastrada com sucesso!');
 			expect(response._getData().data.title).to.be.eql('Europe Takes First Steps in Electrifying World’s Shipping Fleets');
 			expect(response._getData().data.link).to.be.eql('https://e360.yale.edu/features/europe-takes-first-steps-in-electrifying-worlds-shipping-fleets');
-			expect(response._getData().data.ip).to.be.eql('172.1.1.1');
+			expect(response._getData().data.ip).to.be.eql('223.0.0.1');
 			expect(response._getData().data.up_votes).to.be.eql(0);
 			expect(response._getData().data.down_votes).to.be.eql(0);
             
@@ -193,7 +193,7 @@ describe('News Test Suite : addNew function',  () => {
 					id:5,
 					title: '',
 					link:'https://www.quantamagazine.org/cells-talk-in-a-language-that-looks-like-viruses-20180502/',
-					ip: '172.1.1.1'
+					ip: '223.0.0.1'
 				}
 			});
             
@@ -206,7 +206,7 @@ describe('News Test Suite : addNew function',  () => {
 			expect(response._getData().message).to.be.eql('A noticia foi cadastrada com sucesso!');
 			expect(response._getData().data.title).to.be.eql('Cells Talk in a Language That Looks Like Viruses');
 			expect(response._getData().data.link).to.be.eql('https://www.quantamagazine.org/cells-talk-in-a-language-that-looks-like-viruses-20180502/');
-			expect(response._getData().data.ip).to.be.eql('172.1.1.1');
+			expect(response._getData().data.ip).to.be.eql('223.0.0.1');
 			expect(response._getData().data.up_votes).to.be.eql(0);
 			expect(response._getData().data.down_votes).to.be.eql(0);
             
@@ -223,7 +223,7 @@ describe('News Test Suite : addNew function',  () => {
 					id:5,
 					title: '',
 					link:'https://www.quqlasoca,o.com',
-					ip: '172.1.1.1'
+					ip: '223.0.0.1'
 				}
 			});
             
