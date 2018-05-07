@@ -59,7 +59,7 @@ exports.addNew =  async  (req, res) =>  {
 		const result =  await newRepository.create(req.body);
 		
 		if (result['errors'] || result['parent']) {
-			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject('A noticia não foi cadastrada!', result));
+			res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(responseResultObject('A noticia não foi cadastrada!', result));
 		} else {
 			res.status(HttpStatus.CREATED).send(responseResultObject('A noticia foi cadastrada com sucesso!', result));
 		}
