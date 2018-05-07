@@ -14,7 +14,7 @@ exports.upVote =  async  (req, res) =>  {
 		
 		req.body['news_id'] = req.params.id;
 
-		const result =  await votesRepository.upVote(req.body);
+		const result =  await votesRepository.registerVote(req.body);
 
 		if (result['errors']|| result['parent']) {
 			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("O voto não foi cadastrado!", result));
@@ -47,7 +47,7 @@ exports.downVote =  async  (req, res) =>  {
 		
 		req.body['news_id'] = req.params.id;
 
-		const result =  await votesRepository.upVote(req.body);
+		const result =  await votesRepository.registerVote(req.body);
 
 		if (result['errors']|| result['parent']) {
 			res.status(HttpStatus.BAD_REQUEST).send(responseResultObject("O voto não foi cadastrado!", result));
