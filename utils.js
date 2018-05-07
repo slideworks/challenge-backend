@@ -60,6 +60,6 @@ export const responseResultObject = (message, data = 'error') => {
 };
 
 export const apiLimiter = () => {
-	// maximo de 100 requisições durante 15 minutos
+	// maximo de 10 requisições durante 15 minutos
 	return new RateLimit({windowMs: 15*60*1000, max: 10 ,delayMs: 0, message: 'Muitas requisições feitas a partir deste IP, por favor, tente novamente após alguns minutos'});
 };
