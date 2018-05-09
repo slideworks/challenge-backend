@@ -4,7 +4,7 @@ import http from 'http';
 import app from './app';
 
 const server  = http.createServer(app);
-const port = normalizePort(process.env.port || 3000);
+const port = normalizePort(process.env.PORT || 3000);
 const db = loadDatabase();
 
 db.sequelize.sync()
