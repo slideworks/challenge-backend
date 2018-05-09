@@ -75,6 +75,7 @@ Ou entrar no diretorio /doc e acessar o arquivo index.html
 | PATCH            | /api/news/:id/vote      | Cadastra um novo voto
 
 
+Em cada endpoint  possível fazer um total de 10 requisições, após isso o usuário é bloqueado por IP só podendo fazer uma nova requisição depois de 15 minutos.
 
 ## Heroku
 Você pode ver o funcionamento da API no Heroku.
