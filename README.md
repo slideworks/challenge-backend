@@ -78,7 +78,7 @@ Ou entrar no diretorio /doc e acessar o arquivo index.html
 Em cada endpoint  possível fazer um total de 10 requisições, após isso o usuário é bloqueado por IP só podendo fazer uma nova requisição depois de 15 minutos.
 
 ## Heroku
-Você pode ver o funcionamento da API no Heroku.
+Você pode ver o funcionamento da API no Heroku atráves desse link (https://slideworks-challenge-backend.herokuapp.com/api/news)
 
 <p align="center">
   <img src="https://blog.phusion.nl/content/images/2016/07/Heroku.png" width="650"/>
