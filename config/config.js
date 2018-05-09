@@ -1,5 +1,5 @@
 
-let match = ['root','123',':8080','localhost','challengeBackend'];
+let match = ['','root','123','localhost','8000','challengeBackend'];
 
 if(process.env.DATABASE_URL) {
 	match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
