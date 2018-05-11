@@ -31,8 +31,9 @@ class VoteController {
             direction_vote: direction,
             ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
         };
+        console.log(dataCreate);
         mNews.getOne(req.params.id, function(err, result){
-            if (!result) {
+            if (result) {
                 mVote.create(dataCreate, function (err, result) {
                     if (!err) {
                         mNews.associateVote(result, function (err, result) {
