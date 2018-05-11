@@ -27,46 +27,32 @@ class BlockedModel {
         });
     }
 
-    updateOrCreate(data, cb) {
+    updateOrCreate(data) {
         self = this;
         this.Blocked.findAll({
             where: {
                 ip: data.ip
             }
-        }).then(function (result) {      
-            if (result && typeof result[0].dataValues != 'undefined') {
-                data.id = result[0].dataValues['id'];
-                self.update(data, function(err, result) {
-                    if (!err) {
-                        cb(null, result);
-                    } else {
-                        cb(err, null);    
-                    }
-                });
+        }).then(function (result) {
+            if (result) {
+                self.create(data, function(err, result){});
             } else {
-                self.create(data, function(err, result){
-                    if (!err) {
-                        cb(null, result);
-                    } else {
-                        cb(err, null);    
-                    }
-                });
+                data.id = result.id;
+                self.update(data, function(err, result) {});
             }
         }).catch(function (err) {
-            cb(err, null);
         });
     }
 
 
     getOne(ip, cb) {
-        console.log("ip: "+ip);
         this.Blocked.findAll({
             where: {
                 ip: ip
             }
         }).then(function (result) {
-            if (!result && typeof result[0].dataValues != 'undefined') {
-                cb(null, result[0].dataValues);
+            if (JSON.stringify(result) != '[]') {
+                cb(null, result);
             } else {
                 cb(null, null);
             }

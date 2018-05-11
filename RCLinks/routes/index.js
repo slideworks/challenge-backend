@@ -18,12 +18,12 @@ router.patch('/news/:id/down', validarIP, voteCtrl.voteDown);
 function validarIP(req, res, next) {
     /* Middleware que verifica bloqueio de IP */
     blockCtrl.verificarBloqueio(req, function (err, result) {
-        if (!result || !!result) {
-            next();
-        } else { 
-            res.status(403).json(new ResponseStructure(false, msg.blocked.noAccess, null).getJSON());            
+        if (result) {
+            res.status(403).json(new ResponseStructure(false, msg.blocked.noAccess, null).getJSON());     
+        } else {
+            next();      
         }
-    });
+    });s
 }
 
 module.exports = router;
