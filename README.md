@@ -1,73 +1,51 @@
-# Criar uma API Restfull para cadastro de links de notícias
+# API DE NOTÍCIAS
 
-Criar uma aplicação para cadastro de links de notícias/artigos com possibilidade de votos (up e down) de usuários. Todas ações poderão ser feitas por usuários anônimos. Referência: [hacker news](https://news.ycombinator.com/news).
+Aplicação para cadastro de links de notícias/artigos com possibilidade de votos (up e down) de usuários.
 
-O candidato poderá escolher entre criar a aplicação com `NodeJS` ou `PHP`, sendo que:
+## Roteamento 
 
-- __NodeJS:__ Sugerimos usar Express + Sequelize
-- __PHP:__ Sugerimos usar CakePHP
+> **GET** `/news` - Retorna as notícias cadastradas.
 
-## Endpoints
+> **GET** `/news?filter=up` - Ordena a listagem de notícias pela quantidade de votos up.
 
-- `GET /news`: Lista notícias
-- `POST /news`: Cria notícia
-- `PATCH /news/:id/up`: Up vote para notícia
-- `PATCH /news/:id/down`: Down vote para notícia
+> **GET** `/news?filter=down` - Ordena a listagem de notícias pela quantidade de votos down.
 
-## Requisitos
+> **GET** `/news?filter=last` - Ordena a listagem de notícias de acordo com a data de criação.
 
-- Banco de dados MySQL
-- Usar uma biblioteca de ORM com migrations
-- TDD
-- Readme explicativo de como testar e usar
-- Bloqueio temporário de ações repetidadas por IP (cadastro de notícias e votos)
-- Possibilidade de ordenar notícias por: mais votos up, mais votos down, últimos adicionados (no mesmo endpoint de listagem)
-- HTTP Status Code auto-explicativo (200 success, 404 not found, etc)
+> **POST** `/news` - Cadastra uma nova notícia.
 
-## Diferenciais
+> **PATCH** `/news/:id/up` - Adiciona um voto **up** em uma notícia.
 
-- Rate limit
-- Ambiente de desenvolvimento com azk ou docker
-- Teste do link para validar resposta da página
-- Leitura do título da página caso passe apenas o link no cadastro
-- ESLint (nodejs)
-- ES6 (nodejs)
-- PHP 7 (php)
+> **PATCH** `/news/:id/down` - Adiciona um voto **down** em uma notícia.
 
-# Estrutura do response (sugestão):
+# Como instalar
 
-```json
-{
-    "success": true,
-    "message": "Message",
-    "data": {
-        "id": 1
-    }
-}
-```
+## Requisitos:
+* MySQL
+* NodeJS 
 
-# Estrutura do banco de dados (sugestão)
+## Passos para instalação:
+1. Clonar ou Baixar este projeto no Github
+2. Abrir terminal na raiz do projeto:
+    > npm install
 
-- __news__
-    - id
-    - title
-    - link
-    - up_votes
-    - down_votes
-    - ip
-    - created_at
-    - updated_at
-- __votes__
-    - id
-    - news_id
-    - direction_vote
-    - ip
-    - created_at
-- __blocked_ips__
-    - id
-    - ip
-    - until
+3. Atualizar as configurações de banco no arquivo config/config.js
 
-# Envio
+4. Abrir terminal na raiz do projeto e executar:
+    > node_modules/.bin/sequelize/ db:create
+5. No mesmo terminal executar:
+    > node_modules/.bin/sequelize/ db:migrate  
 
-Criar um fork desse projeto e enviar um pull request.
+# Como testar
+
+Executar o comando
+> npm test
+
+
+Testar Rate Limit
+>
+**OBS** O bloqueio de ip está configurado para 20 request's em 5 minutos.
+O RateLimit Test deve ser executado **por último**, pois o IP será bloqueado temporariamente.
+Para remover o bloqueio, deve-se excluir o registro (que contém o IP) na tabela blockeds no banco de dados.
+Comando: `npm run stress`
+
