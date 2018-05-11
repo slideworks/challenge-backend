@@ -3,16 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "node ./test/app.test.js | tap-spec",
+    "stress": "node ./test/rateLimit.test.js | tap-spec"
   },
   "dependencies": {
+    "async": "^2.6.0",
+    "auto-bind": "^1.2.0",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
+    "express-rate-limit": "^2.11.0",
+    "moment": "^2.22.1",
     "morgan": "~1.9.0",
+    "mysql2": "^1.5.3",
+    "request": "^2.85.0",
+    "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "supertest": "^3.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.9.0"
   }
 }
