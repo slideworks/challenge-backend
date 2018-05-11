@@ -6,6 +6,12 @@ Aplicação para cadastro de links de notícias/artigos com possibilidade de vot
 
 > **GET** `/news` - Retorna as notícias cadastradas.
 
+> **GET** `/news?filter=up` - Ordena a listagem de notícias pela quantidade de votos up.
+
+> **GET** `/news?filter=down` - Ordena a listagem de notícias pela quantidade de votos down.
+
+> **GET** `/news?filter=last` - Ordena a listagem de notícias de acordo com a data de criação.
+
 > **POST** `/news` - Cadastra uma nova notícia.
 
 > **PATCH** `/news/:id/up` - Adiciona um voto **up** em uma notícia.
