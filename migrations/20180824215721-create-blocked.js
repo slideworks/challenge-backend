@@ -10,6 +10,13 @@ module.exports = {
       ip: {
         type: Sequelize.STRING
       },
+      until: {
+        type: Sequelize.DATE
+      },
+      state: {
+        type: Sequelize.ENUM,
+        values: ['blocked', 'released']
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
