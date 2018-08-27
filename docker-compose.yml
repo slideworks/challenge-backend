@@ -1,14 +1,21 @@
-version: "2"
+version: '3.3'
+
 services:
-  security:
-    build: ./sample-service
-    ports:
-      - "8123:8123"
-    depends_on:
-      - db
-    environment:
-      - DATABASE_HOST=db
+  node:
+    build: ./docker/app
     volumes:
-      - ./sample-service/api:/app/api
-  db:
-    build: ./database-service
+      - ./app    
+    depends_on: 
+      - mysql
+    environment: 
+      - DATABASE_HOST=mysql
+
+    entrypoint: "node app.js"
+    tty: true
+
+  mysql:
+    build: ./docker/mysql
+    volumes:
+      - ./data/mysql/:/var/lib/mysql
+    expose:
+      - "3306"

@@ -5,8 +5,9 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "./node_modules/.bin/sequelize db:create && ./node_modules/.bin/sequelize db:migrate",
+    "start": "node app.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
